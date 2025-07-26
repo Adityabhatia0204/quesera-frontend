@@ -17,18 +17,18 @@ function App() {
       return;
     }
 
-    try {
-      setLoading(true);
-      const formData = new FormData();
-      formData.append('resume', resumeFile);
+try {
+  setLoading(true);
+  const formData = new FormData();
+  formData.append('resume', resumeFile);
 
-      const uploadRes = await axios.post('http://localhost:5000/upload', formData);
-      const resumeText = uploadRes.data.resumeText;
+  const uploadRes = await axios.post('https://quesera-backend.onrender.com/upload', formData);
+  const resumeText = uploadRes.data.resumeText;
 
-      const analyzeRes = await axios.post('http://localhost:5000/analyze', {
-        resumeText,
-        jobDescription,
-      });
+  const analyzeRes = await axios.post('https://quesera-backend.onrender.com/analyze', {
+    resumeText,
+    jobDescription,
+  });
 
       setResult(analyzeRes.data.response);
     } catch (err) {
