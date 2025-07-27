@@ -22,13 +22,14 @@ try {
   const formData = new FormData();
   formData.append('resume', resumeFile);
 
-  const uploadRes = await axios.post('https://quesera-backend.onrender.com/upload', formData);
-  const resumeText = uploadRes.data.resumeText;
+const uploadRes = await axios.post('http://localhost:5000/upload', formData);
+const resumeText = uploadRes.data.resumeText;
 
-  const analyzeRes = await axios.post('https://quesera-backend.onrender.com/analyze', {
-    resumeText,
-    jobDescription,
-  });
+const analyzeRes = await axios.post('http://localhost:5000/analyze', {
+  resumeText,
+  jobDescription,
+});
+
 
       setResult(analyzeRes.data.response);
     } catch (err) {
@@ -44,17 +45,17 @@ try {
     margin: '4rem auto',
     padding: '2rem',
     borderRadius: '16px',
-    backgroundColor: '#f7f7f9',
+    backgroundColor: '#272757ff',
     boxShadow: '0 0 20px rgba(0,0,0,0.06)',
     fontFamily: 'Segoe UI, sans-serif',
-    color: '#2c2c2c',
+    color: '#ffffffff',
   };
 
   const headingStyle = {
     fontSize: '2rem',
     fontWeight: 700,
     marginBottom: '1rem',
-    color: '#3b3b3b'
+    color: '#ffffffff'
   };
 
   const labelStyle = {
@@ -76,7 +77,7 @@ try {
   const buttonStyle = {
     padding: '10px 20px',
     fontSize: '1rem',
-    backgroundColor: '#4453ff',
+    backgroundColor: '#000000ff',
     color: '#fff',
     border: 'none',
     borderRadius: '8px',
@@ -86,7 +87,7 @@ try {
 
   const resultStyle = {
     marginTop: '2rem',
-    backgroundColor: '#e8ecf8',
+    backgroundColor: '#000000ff',
     padding: '1.25rem',
     borderRadius: '8px',
     whiteSpace: 'pre-wrap',
@@ -96,8 +97,8 @@ try {
 
   return (
     <div style={containerStyle}>
-      <h1 style={headingStyle}>QUESERA</h1>
-      <h2 style={{ fontWeight: 600, color: '#555', fontSize: '1.3rem', marginBottom: '2rem' }}>
+      <h1 style={headingStyle} >QUESERA</h1>
+      <h2 style={{ fontWeight: 600, color: '#ffffff7c', fontSize: '1.3rem', marginBottom: '2rem', fontWeight: 'bold'}}>
         Your Resume & Job Match Analyzer
       </h2>
 
